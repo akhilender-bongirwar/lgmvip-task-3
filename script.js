@@ -10,7 +10,11 @@ addBtn.onclick = function (){
     console.log(name,email,gndr);
     if(name!='' && email!=''){
         var data = [];
-        
+        var selectedData = document.querySelectorAll('input[type="checkbox"]:checked')
+        console.log(selectedData);
+        Array.from(selectedData).forEach(function (e){
+            data.push(e.value);
+        })
         console.log(data);
         const description = `<p><strong>Name:</strong> ${name}<br><strong>Email:</strong> ${email}<br><strong>Gender:</strong> ${document.querySelector('input[type="radio"]:checked').value}
         <br><strong>Skills:</strong> ${data.join(', ')}</p>`
@@ -33,4 +37,12 @@ addBtn.onclick = function (){
     else{
         alert("Please fill all the fields");
     }
+}
+document.getElementById('delete-btn').onclick = () => {
+    if (row != 1) {
+        row--
+        dplay.deleteRow(row)
+    }
+    else
+    return
 }
